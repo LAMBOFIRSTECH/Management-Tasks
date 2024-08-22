@@ -1,0 +1,62 @@
+﻿@page "/users"
+@inject HttpClient Http
+
+<PageTitle>Membre</PageTitle>
+
+
+<div class="d-flex justify-content-center align-items-center vh-170">
+    <div class="card p-4 shadow-lg rounded-lg" style="width: 800px;">
+        <h3 class="text-center"><b>FORMULAIRE DE CRÉATION DES UTILISATEURS</b></h3>
+        <EditForm Model="@userModel" OnValidSubmit="@HandleValidSubmit">
+            <div class="form-group">
+                <label for="lastname">Nom</label>
+                <InputText id="lastname" class="form-control" @bind-Value="userModel.Nom" />
+            </div>
+
+            <div class="form-group">
+                <label for="pass">Mot de passe</label>
+                <InputText id="pass" class="form-control" @bind-Value="userModel.Password" />
+            </div>
+
+
+            <div class="form-group">
+                <label for="role">Rôle</label>
+                <InputSelect id="role" class="form-control" @bind-Value="userModel.Role">
+                    <option value="">Sélectionnez un rôle</option>
+                    <option value="Admin">Admin</option>
+                    <option value="User">Utilisateur</option>
+                    <option value="Guest">Invité</option>
+                </InputSelect>
+            </div>
+
+             <div class="form-group">
+                <label for="checkpass">Confirmer mot de passe</label>
+                <InputText id="check_pass" class="form-control" @bind-Value="userModel.Password" />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Adresse Mail</label>
+                <InputText id="email" type="email" class="form-control" @bind-Value="userModel.Email" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Soumettre</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private UserModel userModel = new UserModel();
+
+    private void HandleValidSubmit()
+    {
+        // Logique pour traiter les informations d'utilisateur
+        Console.WriteLine($"Nom: {userModel.Nom}, Pass: {userModel.Password}, Email: {userModel.Email}, Rôle: {userModel.Role}");
+    }
+
+    public class UserModel
+    {
+        public string Nom { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public string Role { get; set; }
+    }
+}

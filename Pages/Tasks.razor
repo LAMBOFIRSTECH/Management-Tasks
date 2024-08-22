@@ -1,0 +1,87 @@
+﻿@page "/tasks"
+@inject HttpClient Http
+
+<PageTitle>Tache</PageTitle>
+
+<div class="d-flex justify-content-center align-items-center vh-170">
+    <div class="card p-4 shadow-lg rounded-lg" style="width: 800px;">
+        <h3 class="text-center"><b>FORMULAIRE DE CRÉATION DES TACHES</b></h3>
+        <EditForm Model="@taskModel" OnValidSubmit="@HandleValidSubmit">
+            <div class="form-group">
+                <label for="id_task">ID</label>
+                <InputText id="id_task" class="form-control" @bind-Value="taskModel.TaskId" readonly />
+            </div>
+
+            <div class="form-group">
+                <label for="title">Titre</label>
+                <InputText id="title" class="form-control" @bind-Value="taskModel.TaskTitle" />
+            </div>
+
+            <div class="form-group">
+                <label for="libellé">Description de la tache</label>
+                <InputTextArea id="libellé" class="form-control" @bind-Value="taskModel.TaskDetails" />
+            </div>
+
+            <div class="form-group">
+                <label for="user">Assigné à</label>
+                <InputText id="user" class="form-control" list="user_list" @bind-Value="taskModel.UserTask" />
+                <datalist id="user_list">
+                    @foreach (var user in users)
+                    {
+                        <option value="@user"></option>
+                    }
+                </datalist>
+            </div>
+
+            <div class="form-group">
+                <label for="dateDebut">Date début</label>
+                <InputDate id="dateDebut" class="form-control" @bind-Value="taskModel.TaskStartDate" />
+            </div>
+
+            <div class="form-group">
+                <label for="dateFin">Date fin</label>
+                <InputDate id="dateFin" class="form-control" @bind-Value="taskModel.TaskDueDate" />
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+                <button type="button" class="btn btn-secondary" @onclick="HandleReset">Annuler</button>
+            </div>
+            <div id="message" class="text-danger">@message</div>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private TaskModel taskModel = new TaskModel();
+    private string message = string.Empty;
+
+    // Sample list of users
+    private List<string> users = new List<string> { "Alice", "Bob", "Charlie" };
+
+    private void HandleValidSubmit()
+    {
+        // Logique pour gérer l'envoi du formulaire
+        message = "Formulaire envoyé avec succès!";
+        Console.WriteLine($"ID: {taskModel.TaskId}, Titre: {taskModel.TaskTitle}, Description: {taskModel.TaskDetails}");
+        Console.WriteLine($"Assigné à: {taskModel.UserTask}, Date début: {taskModel.TaskStartDate}, Date fin: {taskModel.TaskDueDate}");
+    }
+
+    private void HandleReset()
+    {
+        // Logique pour gérer la réinitialisation du formulaire
+        taskModel = new TaskModel();
+        message = string.Empty;
+    }
+
+    public class TaskModel
+    {
+        public string TaskId { get; set; }
+        public string TaskTitle { get; set; }
+        public string TaskDetails { get; set; }
+        public string UserTask { get; set; }
+        public DateTime? TaskStartDate { get; set; }
+        public DateTime? TaskDueDate { get; set; }
+    }
+}
+
