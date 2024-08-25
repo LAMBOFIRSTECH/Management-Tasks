@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/lambo-ubuntu/Management-Tasks/Management-Tasks.csproj": {}
+    "/home/lambo-ubuntu/Management_Tasks/Management_Tasks.csproj": {}
   },
   "projects": {
-    "/home/lambo-ubuntu/Management-Tasks/Management-Tasks.csproj": {
+    "/home/lambo-ubuntu/Management_Tasks/Management_Tasks.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/lambo-ubuntu/Management-Tasks/Management-Tasks.csproj",
-        "projectName": "Management-Tasks",
-        "projectPath": "/home/lambo-ubuntu/Management-Tasks/Management-Tasks.csproj",
+        "projectUniqueName": "/home/lambo-ubuntu/Management_Tasks/Management_Tasks.csproj",
+        "projectName": "Management_Tasks",
+        "projectPath": "/home/lambo-ubuntu/Management_Tasks/Management_Tasks.csproj",
         "packagesPath": "/home/lambo-ubuntu/.nuget/packages/",
-        "outputPath": "/home/lambo-ubuntu/Management-Tasks/obj/",
+        "outputPath": "/home/lambo-ubuntu/Management_Tasks/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/lambo-ubuntu/.nuget/NuGet/NuGet.Config"
@@ -38,6 +38,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Blazor.Extensions.Logging": {
+              "target": "Package",
+              "version": "[2.0.4, )"
+            },
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
               "version": "[6.0.29, )"

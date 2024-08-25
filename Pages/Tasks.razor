@@ -1,5 +1,7 @@
 ﻿@page "/tasks"
 @inject HttpClient Http
+@using Management_Tasks.Pages
+@inject ILogger<Tasks> Logger
 
 <PageTitle>Tache</PageTitle>
 
@@ -9,12 +11,12 @@
         <EditForm Model="@taskModel" OnValidSubmit="@HandleValidSubmit">
             <div class="form-group">
                 <label for="id_task">ID</label>
-                <InputText id="id_task" class="form-control" @bind-Value="taskModel.TaskId" readonly />
+                <InputText id="id_task" class="form-control" @bind-Value="taskModel.Matricule" readonly />
             </div>
 
             <div class="form-group">
                 <label for="title">Titre</label>
-                <InputText id="title" class="form-control" @bind-Value="taskModel.TaskTitle" />
+                <InputText id="title" class="form-control" @bind-Value="taskModel.Titre" />
             </div>
 
             <div class="form-group">
@@ -53,7 +55,14 @@
 </div>
 
 @code {
-    private TaskModel taskModel = new TaskModel();
+    @using Microsoft.Extensions.Logging
+    protected override void OnInitialized()
+    {
+        Logger.LogDebug("ExampleComponent initialized.");
+    }
+
+    private DataModel.TaskModel taskModel = new DataModel.TaskModel();
+ 
     private string message = string.Empty;
 
     // Sample list of users
@@ -63,25 +72,16 @@
     {
         // Logique pour gérer l'envoi du formulaire
         message = "Formulaire envoyé avec succès!";
-        Console.WriteLine($"ID: {taskModel.TaskId}, Titre: {taskModel.TaskTitle}, Description: {taskModel.TaskDetails}");
-        Console.WriteLine($"Assigné à: {taskModel.UserTask}, Date début: {taskModel.TaskStartDate}, Date fin: {taskModel.TaskDueDate}");
+        Logger.LogInformation($"ID: {taskModel.Matricule}, Titre: {taskModel.Titre}, Description: {taskModel.TaskDetails}, Assigné à: {taskModel.UserTask}, Date début: {taskModel.TaskStartDate}, Date fin: {taskModel.TaskDueDate}");
     }
+    
 
     private void HandleReset()
     {
         // Logique pour gérer la réinitialisation du formulaire
-        taskModel = new TaskModel();
+        taskModel = new DataModel.TaskModel();
         message = string.Empty;
     }
-
-    public class TaskModel
-    {
-        public string TaskId { get; set; }
-        public string TaskTitle { get; set; }
-        public string TaskDetails { get; set; }
-        public string UserTask { get; set; }
-        public DateTime? TaskStartDate { get; set; }
-        public DateTime? TaskDueDate { get; set; }
-    }
 }
+
 

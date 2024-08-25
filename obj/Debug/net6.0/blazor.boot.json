@@ -2,11 +2,12 @@
   "cacheBootResources": true,
   "config": [ ],
   "debugBuild": true,
-  "entryAssembly": "Management-Tasks",
+  "entryAssembly": "Management_Tasks",
   "icuDataMode": 0,
   "linkerEnabled": false,
   "resources": {
     "assembly": {
+      "Blazor.Extensions.Logging.dll": "sha256-EtRNQEJJOXiHCzSsaER5PPSqCmdrD2OxFA8rPxF1wSk=",
       "Microsoft.AspNetCore.Authorization.dll": "sha256-wAQs+PqhAIfumlk4GbLSgEj8w9mYM4VuLzfMbWVxk+M=",
       "Microsoft.AspNetCore.Components.dll": "sha256-RU6TxEUAf73ZsDRnCy+\/lYX552tyPP61jAEvRnfyrSA=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-VmFZcAnLDEtf1l+9TAq4rSq941tEaUYCK6WpW7JiaCE=",
@@ -196,13 +197,13 @@
       "mscorlib.dll": "sha256-Dq0ZWn1Dzc\/UAPz\/NgCNG1XJX8rhBI5c5\/jpgKXDF6U=",
       "netstandard.dll": "sha256-7BfApPnkIIxITLLgPNqPbmPRBWu7G\/WB0oxp+DOlY0w=",
       "System.Private.CoreLib.dll": "sha256-\/IakvE+iRudxlHbw47DUw2QUemsywWIigQHWe\/Pxv7U=",
-      "Management-Tasks.dll": "sha256-Hl5r2Ia3UM5bBCx\/jOFwxwzMkMR0qoMrEENjTXhPbW8="
+      "Management_Tasks.dll": "sha256-oO2LM5snHZpC6j4KZE6WFphsCQM7kjImDhbpCsIMO1c="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "Management-Tasks.pdb": "sha256-VBmwbgLyuqDsDA9GQheWmObTZ2Tzw1ritP3Zng8RTrY="
+      "Management_Tasks.pdb": "sha256-Z8HLQoF4cp1Bntfy6rAD9vl8Vs72te2a4lyUv1UNn1U="
     },
     "runtime": {
       "dotnet.6.0.29.gucbdneaoa.js": "sha256-BV1wi9qAMCmpfZ+aXPplngN3cFgig0bFqWhNad3R5Lo=",

@@ -9,47 +9,47 @@ build_property._SupportedPlatformList = browser
 build_property.EnableSingleFileAnalyzer = 
 build_property.EnableTrimAnalyzer = true
 build_property.IncludeAllContentForSelfExtract = 
-build_property.RootNamespace = Management-Tasks
-build_property.RootNamespace = Management-Tasks
-build_property.ProjectDir = /home/lambo-ubuntu/Management-Tasks/
+build_property.RootNamespace = Management_Tasks
+build_property.RootNamespace = Management_Tasks
+build_property.ProjectDir = /home/lambo-ubuntu/Management_Tasks/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/lambo-ubuntu/Management-Tasks
+build_property.MSBuildProjectDirectory = /home/lambo-ubuntu/Management_Tasks
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/lambo-ubuntu/Management-Tasks/App.razor]
+[/home/lambo-ubuntu/Management_Tasks/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lambo-ubuntu/Management-Tasks/Pages/Index.razor]
+[/home/lambo-ubuntu/Management_Tasks/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lambo-ubuntu/Management-Tasks/Pages/Login.razor]
+[/home/lambo-ubuntu/Management_Tasks/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lambo-ubuntu/Management-Tasks/Pages/Members.razor]
+[/home/lambo-ubuntu/Management_Tasks/Pages/Members.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTWVtYmVycy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lambo-ubuntu/Management-Tasks/Pages/Tasks.razor]
+[/home/lambo-ubuntu/Management_Tasks/Pages/Tasks.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGFza3MucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lambo-ubuntu/Management-Tasks/Shared/SurveyPrompt.razor]
+[/home/lambo-ubuntu/Management_Tasks/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lambo-ubuntu/Management-Tasks/_Imports.razor]
+[/home/lambo-ubuntu/Management_Tasks/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/lambo-ubuntu/Management-Tasks/Shared/MainLayout.razor]
+[/home/lambo-ubuntu/Management_Tasks/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-a5uz90k1s5
+build_metadata.AdditionalFiles.CssScope = b-0zm0h5ur3i
 
-[/home/lambo-ubuntu/Management-Tasks/Shared/NavMenu.razor]
+[/home/lambo-ubuntu/Management_Tasks/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-54e4c1d1pq
+build_metadata.AdditionalFiles.CssScope = b-j3rd5umfc6

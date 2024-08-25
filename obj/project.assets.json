@@ -2,6 +2,26 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "Blazor.Extensions.Logging/2.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "5.0.3",
+          "Microsoft.Extensions.Logging": "5.0.0",
+          "System.Text.Json": "5.0.1"
+        },
+        "compile": {
+          "lib/net5.0/Blazor.Extensions.Logging.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazor.Extensions.Logging.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazor.Extensions.Logging.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazor.Extensions.Logging.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/6.0.29": {
         "type": "package",
         "dependencies": {
@@ -501,6 +521,26 @@
       }
     },
     "net6.0/browser-wasm": {
+      "Blazor.Extensions.Logging/2.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "5.0.3",
+          "Microsoft.Extensions.Logging": "5.0.0",
+          "System.Text.Json": "5.0.1"
+        },
+        "compile": {
+          "lib/net5.0/Blazor.Extensions.Logging.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Blazor.Extensions.Logging.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazor.Extensions.Logging.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazor.Extensions.Logging.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/6.0.29": {
         "type": "package",
         "dependencies": {
@@ -995,6 +1035,25 @@
     }
   },
   "libraries": {
+    "Blazor.Extensions.Logging/2.0.4": {
+      "sha512": "9KXdqdBpDyKLoFdk629vI/Rso+sTosWuRwQjQfevsewlYDtdp6IPhvG/xqAbMkS6UKpZRoLR/MiKV3HLnJ1t4w==",
+      "type": "package",
+      "path": "blazor.extensions.logging/2.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "BlazorExtensions.png",
+        "LICENSE",
+        "blazor.extensions.logging.2.0.4.nupkg.sha512",
+        "blazor.extensions.logging.nuspec",
+        "build/Blazor.Extensions.Logging.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazor.Extensions.Logging.props",
+        "buildTransitive/Blazor.Extensions.Logging.props",
+        "lib/net5.0/Blazor.Extensions.Logging.dll",
+        "staticwebassets/BrowserConsoleLogger.js"
+      ]
+    },
     "Microsoft.AspNetCore.Authorization/6.0.29": {
       "sha512": "1GbePh5YLbjNJjluHPiD2Nc3Y6TSPxWIa6zDxq4vsHrFESspXwRlMD73pd/9LYwQra9+4BgWz3qUFYiBHbBKKQ==",
       "type": "package",
@@ -1757,6 +1816,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Blazor.Extensions.Logging >= 2.0.4",
       "Microsoft.AspNetCore.Components.WebAssembly >= 6.0.29",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 6.0.29"
     ]
@@ -1767,11 +1827,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/lambo-ubuntu/Management-Tasks/Management-Tasks.csproj",
-      "projectName": "Management-Tasks",
-      "projectPath": "/home/lambo-ubuntu/Management-Tasks/Management-Tasks.csproj",
+      "projectUniqueName": "/home/lambo-ubuntu/Management_Tasks/Management_Tasks.csproj",
+      "projectName": "Management_Tasks",
+      "projectPath": "/home/lambo-ubuntu/Management_Tasks/Management_Tasks.csproj",
       "packagesPath": "/home/lambo-ubuntu/.nuget/packages/",
-      "outputPath": "/home/lambo-ubuntu/Management-Tasks/obj/",
+      "outputPath": "/home/lambo-ubuntu/Management_Tasks/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/lambo-ubuntu/.nuget/NuGet/NuGet.Config"
@@ -1798,6 +1858,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Blazor.Extensions.Logging": {
+            "target": "Package",
+            "version": "[2.0.4, )"
+          },
           "Microsoft.AspNetCore.Components.WebAssembly": {
             "target": "Package",
             "version": "[6.0.29, )"

@@ -34,17 +34,29 @@
 
 @code {
     private LoginModel loginModel = new LoginModel();
+    private string message = string.Empty;
+    private enum MessageType { Succes, Error }
+    private string TextColor(MessageType messageType)
+    {
+        return messageType switch
+        {
+            MessageType.Succes => "#00FF00", // Vert pour succès
+            MessageType.Error => "#FF0000", // Rouge pour erreur
+            _ => string.Empty
+        };
+    }
 
     private void HandleValidSubmit()
     {
         // Logique pour traiter les informations de connexion
-        Console.WriteLine($"Identifiant: {loginModel.Username}, Mot de passe: {loginModel.Password}, Rôle: {loginModel.Role}");
+        Console.WriteLine($"Identifiant: {loginModel.Username}, Rôle: {loginModel.Role}");
+        message = $"{MessageType.Succes}";
     }
 
     public class LoginModel
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
+        public string? Username { get; set; }
+        public string? Password { get; set; }
+        public string? Role { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 ﻿@page "/users"
 @inject HttpClient Http
+@* @using Management_Tasks.Pages *@
+
 
 <PageTitle>Membre</PageTitle>
 
@@ -14,8 +16,9 @@
             </div>
 
             <div class="form-group">
-                <label for="pass">Mot de passe</label>
-                <InputText id="pass" class="form-control" @bind-Value="userModel.Password" />
+                <label for="password">Mot de passe</label>
+                <InputText id="password" type="password" placeholder="Password" class="form-control"
+                    @bind-Value="userModel.Password" />
             </div>
 
 
@@ -29,9 +32,10 @@
                 </InputSelect>
             </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label for="checkpass">Confirmer mot de passe</label>
-                <InputText id="check_pass" class="form-control" @bind-Value="userModel.Password" />
+                <InputText id="check_pass" type="password" placeholder="Confirmed password" class="form-control"
+                    @bind-Value="passWord" />
             </div>
 
             <div class="form-group">
@@ -39,24 +43,49 @@
                 <InputText id="email" type="email" class="form-control" @bind-Value="userModel.Email" />
             </div>
             <button type="submit" class="btn btn-primary btn-block">Soumettre</button>
+            <button type="button" class="btn btn-secondary" @onclick="HandleReset">Annuler</button>
+            <div id="message" class="text-danger">@message</div>
         </EditForm>
     </div>
 </div>
 
 @code {
-    private UserModel userModel = new UserModel();
+    private DataModel.UserModel userModel = new DataModel.UserModel();
+    private string message = string.Empty;
+    private enum MessageType { Succes, Error }
+    private string passWord = string.Empty;
 
+    private string TextColor(MessageType messageType)
+    {
+        return messageType switch
+        {
+            MessageType.Succes => "#00FF00", // Vert pour succès
+            MessageType.Error => "#FF0000", // Rouge pour erreur
+            _ => string.Empty
+        };
+    }
+    public bool CheckPass()
+    {
+        if (passWord != userModel.Password)
+        {
+            message = $"{MessageType.Error}: Veuillez saisir le meme mot de passe";
+            return false;
+        }
+
+        return true;
+
+    }
     private void HandleValidSubmit()
     {
-        // Logique pour traiter les informations d'utilisateur
-        Console.WriteLine($"Nom: {userModel.Nom}, Pass: {userModel.Password}, Email: {userModel.Email}, Rôle: {userModel.Role}");
+        if (CheckPass())
+        {
+            Console.WriteLine($"Nom: {userModel.Nom}, Email: {userModel.Email}, Rôle: {userModel.Role}");
+            message = $"{MessageType.Succes}";
+        }
     }
-
-    public class UserModel
+    private void HandleReset()
     {
-        public string Nom { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string Role { get; set; }
+        userModel = new DataModel.UserModel();
+        message = string.Empty;
     }
 }

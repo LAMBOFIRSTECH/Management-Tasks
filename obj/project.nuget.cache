@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "QrfwDQI5waA5TJ1J+6BUeNqKfPNXtv/TVuMpNkGPtXmdwa+EcnvhrARN/rn33h9iVfjIgtCnUHYzk/APJ6HP6w==",
+  "dgSpecHash": "6CHkdLAJLvUn1TgzVtv1vsgTs+MKIBiihJaAzIFi+uFrHqt7VRL+cvjYlEg2RF9HrkMps6dlwlIrCCifeMFPiQ==",
   "success": true,
-  "projectFilePath": "/home/lambo-ubuntu/Management-Tasks/Management-Tasks.csproj",
+  "projectFilePath": "/home/lambo-ubuntu/Management_Tasks/Management_Tasks.csproj",
   "expectedPackageFiles": [
+    "/home/lambo-ubuntu/.nuget/packages/blazor.extensions.logging/2.0.4/blazor.extensions.logging.2.0.4.nupkg.sha512",
     "/home/lambo-ubuntu/.nuget/packages/microsoft.aspnetcore.authorization/6.0.29/microsoft.aspnetcore.authorization.6.0.29.nupkg.sha512",
     "/home/lambo-ubuntu/.nuget/packages/microsoft.aspnetcore.components/6.0.29/microsoft.aspnetcore.components.6.0.29.nupkg.sha512",
     "/home/lambo-ubuntu/.nuget/packages/microsoft.aspnetcore.components.analyzers/6.0.29/microsoft.aspnetcore.components.analyzers.6.0.29.nupkg.sha512",
