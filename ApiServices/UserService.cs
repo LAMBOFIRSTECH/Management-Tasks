@@ -3,7 +3,7 @@ using static Management_Tasks.Models.DataModel;
 
 namespace Management_Tasks.ApiServices
 {
-    public class UserService
+	public class UserService
 	{
 
 		private readonly HttpClient _httpClient;
@@ -27,3 +27,6 @@ namespace Management_Tasks.ApiServices
 	}
 
 }
+
+
+

@@ -1,4 +1,5 @@
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/blazor.boot.json
+/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/Blazor.Extensions.Logging.dll
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/blazor.webassembly.js
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/dotnet.6.0.29.gucbdneaoa.js
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/dotnet.timezones.blat
@@ -362,6 +363,7 @@
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/System.Private.Xml.dll.gz
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/Microsoft.Win32.Primitives.dll.gz
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/System.IO.FileSystem.Watcher.dll.gz
+/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/Blazor.Extensions.Logging.dll.gz
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/System.Reflection.Emit.dll.gz
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/Management_Tasks.dll.gz
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/System.Data.Common.dll.gz
@@ -400,6 +402,7 @@
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/Management_Tasks.staticwebassets.runtime.json
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/Management_Tasks.dll
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/Management_Tasks.pdb
+/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/Blazor.Extensions.Logging.dll
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/Microsoft.AspNetCore.Authorization.dll
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/Microsoft.AspNetCore.Components.dll
 /home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/Microsoft.AspNetCore.Components.Forms.dll
@@ -602,6 +605,7 @@
 /home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/Management_Tasks.AssemblyInfo.cs
 /home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/Management_Tasks.csproj.CoreCompileInputs.cache
 /home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/Management_Tasks.MvcApplicationPartsAssemblyInfo.cache
+/home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/build-gz/uvKypp+j.gz
 /home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/build-gz/txynIyMK.gz
 /home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/build-gz/YL5JzXgl.gz
 /home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/build-gz/112VCpQs.gz
@@ -813,7 +817,3 @@
 /home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/refint/Management_Tasks.dll
 /home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/Management_Tasks.pdb
 /home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/ref/Management_Tasks.dll
-/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/Blazor.Extensions.Logging.dll
-/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/Blazor.Extensions.Logging.dll.gz
-/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/Blazor.Extensions.Logging.dll
-/home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/build-gz/uvKypp+j.gz
