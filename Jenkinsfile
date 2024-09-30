@@ -1,6 +1,6 @@
 /* groovylint-disable-next-line CompileStatic */
 pipeline {
-    agent { label 'linux' }
+    agent { label 'Linux' }
     environment {
         WORKSPACE_DIR = "${env.WORKSPACE}"
         APP_DIR = "${WORKSPACE_DIR}/Management_Tasks"
