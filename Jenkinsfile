@@ -51,7 +51,33 @@ pipeline {
         //         }
         //     }
         // }
+        stage('Build de l\'image docker') {
+            steps {
+                sh '''
+                   docker build -t web-app .
+                   '''
+            }
+        }
+        stage('Déploiement dans un container Docker') {
+            steps {
+                script {
+                    /* groovylint-disable-next-line NestedBlockDepth */
+                    try {
+                        /* groovylint-disable-next-line GStringExpressionWithinString, LineLength */
+                        sh 'docker run -d -p 5195:5195 -p 7251:7251 --name ${PROJECT_NAME} -v ${COVERAGE_PATH}:/TestResults  web-app'
 
+                        sleep(time: 10, unit: 'SECONDS')
+
+                        /* groovylint-disable-next-line GStringExpressionWithinString */
+                        sh 'docker exec ${PROJECT_NAME} /bin/bash -c "chmod -R 777 /TestResults"'
+                    /* groovylint-disable-next-line CatchException, NestedBlockDepth */
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        throw e
+                    }
+                }
+            }
+        }
         stage('Vérification via SonarQube ') {
             steps {
                 script {
