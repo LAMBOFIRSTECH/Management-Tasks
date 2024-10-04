@@ -1,10 +1,10 @@
 ﻿@page "/users"
 @inject HttpClient Http
+@inject Management_Tasks.ApiServices.UserService UserService 
+@*C'est ainsi qu'on récupère une classe dans la page de vue  *@ 
 @* @using Management_Tasks.Pages *@
 
-
-<PageTitle>Membre</PageTitle>
-
+<PageTitle>Membres</PageTitle>
 
 <div class="d-flex justify-content-center align-items-center vh-170">
     <div class="card p-4 shadow-lg rounded-lg" style="width: 800px;">
@@ -18,17 +18,14 @@
             <div class="form-group">
                 <label for="password">Mot de passe</label>
                 <InputText id="password" type="password" placeholder="Password" class="form-control"
-                    @bind-Value="userModel.Password" />
+                    @bind-Value="userModel.Pass" />
             </div>
-
 
             <div class="form-group">
                 <label for="role">Rôle</label>
-                <InputSelect id="role" class="form-control" @bind-Value="userModel.Role">
-                    <option value="">Sélectionnez un rôle</option>
-                    <option value="Admin">Admin</option>
-                    <option value="User">Utilisateur</option>
-                    <option value="Guest">Invité</option>
+                <InputSelect id="role" class="form-control" @bind-Value="roleString"> 
+                    <option value="Administrateur">Administrateur</option>
+                    <option value="Utilisateur">Utilisateur</option>
                 </InputSelect>
             </div>
 
@@ -42,6 +39,7 @@
                 <label for="email">Adresse Mail</label>
                 <InputText id="email" type="email" class="form-control" @bind-Value="userModel.Email" />
             </div>
+
             <button type="submit" class="btn btn-primary btn-block">Soumettre</button>
             <button type="button" class="btn btn-secondary" @onclick="HandleReset">Annuler</button>
             <div id="message" class="text-danger">@message</div>
@@ -50,11 +48,49 @@
 </div>
 
 @code {
+
     private DataModel.UserModel userModel = new DataModel.UserModel();
+    private string roleString = string.Empty;
     private string message = string.Empty;
     private enum MessageType { Succes, Error }
     private string passWord = string.Empty;
 
+    public bool CheckPass()
+    {
+        if (!string.IsNullOrWhiteSpace(passWord) && passWord == userModel.Pass)
+        {
+            message = $"{MessageType.Succes}: Le mot de passe correspond.";
+            Console.WriteLine($"Nom: {userModel.Nom}, Email: {userModel.Email}, Rôle: {userModel.Role}");
+            return true;
+        }
+        message = $"{MessageType.Error}: Les mots de passe ne correspondent pas.";
+        return false;
+    }
+    
+    protected async Task HandleValidSubmit()
+    {
+        if (!CheckPass())
+        {
+            message = $"{MessageType.Error}: Les mots de passe ne correspondent pas. L'utilisateur n'a pas été créé.";
+            return; 
+        }
+        try
+        {
+            Enum.TryParse(roleString, true, out DataModel.UserModel.Privilege privilege);
+            userModel.Role = privilege;
+            DataModel.UserModel utilisateur = new DataModel.UserModel();
+            utilisateur.Nom = userModel.Nom;
+            utilisateur.Pass = userModel.Pass;
+            utilisateur.Role = userModel.Role;
+            utilisateur.Email = userModel.Email;
+            await UserService.CreateUser(utilisateur);
+            message = $"{MessageType.Succes}: Utilisateur créé avec succès.";
+        }
+        catch (Exception ex)
+        {
+            message = $"{MessageType.Error}: {ex.Message}";
+        }
+    }
     private string TextColor(MessageType messageType)
     {
         return messageType switch
@@ -63,25 +99,6 @@
             MessageType.Error => "#FF0000", // Rouge pour erreur
             _ => string.Empty
         };
-    }
-    public bool CheckPass()
-    {
-        if (passWord != userModel.Password)
-        {
-            message = $"{MessageType.Error}: Veuillez saisir le meme mot de passe";
-            return false;
-        }
-
-        return true;
-
-    }
-    private void HandleValidSubmit()
-    {
-        if (CheckPass())
-        {
-            Console.WriteLine($"Nom: {userModel.Nom}, Email: {userModel.Email}, Rôle: {userModel.Role}");
-            message = $"{MessageType.Succes}";
-        }
     }
     private void HandleReset()
     {

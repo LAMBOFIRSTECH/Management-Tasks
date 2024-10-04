@@ -7,9 +7,6 @@ namespace Management_Tasks.Models
 	{
 		public class UserModel
 		{
-			/// <summary>
-			/// Représente l'identifiant unique d'un utilisateur.
-			/// </summary>
 			[Key]
 			public int ID { get; set; }
 			//public Guid UserId { get; set; } A revoir
@@ -21,15 +18,15 @@ namespace Management_Tasks.Models
 			public string Email { get; set; }
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
-			public enum Privilege { Admin, UserX }
+			public enum Privilege { Administrateur, Utilisateur }
 			[EnumDataType(typeof(Privilege))]
 			[Required]
 			public Privilege Role { get; set; }
 
 			[Required]
 			[Category("Security")]
-			[System.Text.Json.Serialization.JsonIgnore] // set à disable le mot de passe dans la serialisation json
-			public string? Password { get; set; }
+			//[System.Text.Json.Serialization.JsonIgnore] // set à disable le mot de passe dans la serialisation json
+			public string? Pass { get; set; }
 
 		}
 		public class TaskModel

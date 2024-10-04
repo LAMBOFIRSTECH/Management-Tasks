@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6CHkdLAJLvUn1TgzVtv1vsgTs+MKIBiihJaAzIFi+uFrHqt7VRL+cvjYlEg2RF9HrkMps6dlwlIrCCifeMFPiQ==",
+  "dgSpecHash": "O+4MlMFE1leQOvrS7EMgR7nSvnGCfJeeW8ViGtoEYQCSb3KeAx5I74vsIEfDWZbxUGbnvnhFy+tjsv6dzMEqgw==",
   "success": true,
   "projectFilePath": "/home/lambo-ubuntu/Management_Tasks/Management_Tasks.csproj",
   "expectedPackageFiles": [
@@ -23,6 +23,7 @@
     "/home/lambo-ubuntu/.nuget/packages/microsoft.extensions.fileproviders.abstractions/6.0.0/microsoft.extensions.fileproviders.abstractions.6.0.0.nupkg.sha512",
     "/home/lambo-ubuntu/.nuget/packages/microsoft.extensions.fileproviders.physical/6.0.0/microsoft.extensions.fileproviders.physical.6.0.0.nupkg.sha512",
     "/home/lambo-ubuntu/.nuget/packages/microsoft.extensions.filesystemglobbing/6.0.0/microsoft.extensions.filesystemglobbing.6.0.0.nupkg.sha512",
+    "/home/lambo-ubuntu/.nuget/packages/microsoft.extensions.http/6.0.0/microsoft.extensions.http.6.0.0.nupkg.sha512",
     "/home/lambo-ubuntu/.nuget/packages/microsoft.extensions.logging/6.0.0/microsoft.extensions.logging.6.0.0.nupkg.sha512",
     "/home/lambo-ubuntu/.nuget/packages/microsoft.extensions.logging.abstractions/6.0.4/microsoft.extensions.logging.abstractions.6.0.4.nupkg.sha512",
     "/home/lambo-ubuntu/.nuget/packages/microsoft.extensions.options/6.0.0/microsoft.extensions.options.6.0.0.nupkg.sha512",

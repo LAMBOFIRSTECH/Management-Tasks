@@ -817,3 +817,7 @@
 /home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/refint/Management_Tasks.dll
 /home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/Management_Tasks.pdb
 /home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/ref/Management_Tasks.dll
+/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/Microsoft.Extensions.Http.dll
+/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/Microsoft.Extensions.Http.dll.gz
+/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/Microsoft.Extensions.Http.dll
+/home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/build-gz/Lego9Rw3.gz

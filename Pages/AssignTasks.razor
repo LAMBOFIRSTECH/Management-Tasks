@@ -1,0 +1,43 @@
+﻿@page "/assign_tasks"
+@inject HttpClient Http
+@inject Management_Tasks.ApiServices.UserService UserService
+<PageTitle>Assign</PageTitle>
+
+<h1>listes des taches et utilisateurs</h1>
+<li> titi</li>
+<li>toto </li>
+<SurveyPrompt Title="" />
+
+<!-- Tableau des tâches -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Role</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in userModels)
+        {
+            <tr>
+                <td>@user.ID</td>
+                <td>@user.Nom</td>
+                <td>@user.Email</td>
+                <td>@user.Role</td>
+    
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    List<DataModel.UserModel> userModels= new List<DataModel.UserModel>();
+    protected override async Task OnInitializedAsync()
+    {
+        userModels = await UserService.GetUsersAsync(); // Appel de la méthode du service
+    }
+
+}

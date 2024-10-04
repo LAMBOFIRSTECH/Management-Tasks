@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uVvgAl7eKP5ChT9vnaeRO0YSOhcGDiqPqfp3+q0RzJM=",
+  "Hash": "5oZqtCpE0xK9k2ZQeYkuSL7rPIkkWSiBc2gIZTpDp4I=",
   "Source": "Management_Tasks",
   "BasePath": "/",
   "Mode": "Root",
@@ -525,6 +525,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/home/lambo-ubuntu/.nuget/packages/microsoft.extensions.filesystemglobbing/6.0.0/lib/net6.0/Microsoft.Extensions.FileSystemGlobbing.dll"
+    },
+    {
+      "Identity": "/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/Microsoft.Extensions.Http.dll",
+      "SourceId": "Management_Tasks",
+      "SourceType": "Computed",
+      "ContentRoot": "/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Extensions.Http.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/home/lambo-ubuntu/.nuget/packages/microsoft.extensions.http/6.0.0/lib/netstandard2.0/Microsoft.Extensions.Http.dll"
     },
     {
       "Identity": "/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/Microsoft.Extensions.Logging.Abstractions.dll",
@@ -5353,6 +5370,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/System.Reflection.Primitives.dll"
+    },
+    {
+      "Identity": "/home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/build-gz/Lego9Rw3.gz",
+      "SourceId": "Management_Tasks",
+      "SourceType": "Computed",
+      "ContentRoot": "/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Extensions.Http.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/Microsoft.Extensions.Http.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/home/lambo-ubuntu/Management_Tasks/bin/Debug/net6.0/wwwroot/_framework/Microsoft.Extensions.Http.dll"
     },
     {
       "Identity": "/home/lambo-ubuntu/Management_Tasks/obj/Debug/net6.0/build-gz/lhLEo0hF.gz",
