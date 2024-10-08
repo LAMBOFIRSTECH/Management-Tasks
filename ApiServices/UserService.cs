@@ -15,7 +15,6 @@ namespace Management_Tasks.ApiServices
 		{
 			this.httpClient = httpClientFactory.CreateClient("UserService");
 			this.logger = logger;
-
 		}
 		public async Task<List<DataModel.UserModel>> GetUsersAsync()
 		{
@@ -30,43 +29,34 @@ namespace Management_Tasks.ApiServices
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 			return userModels!;
 		}
-
-
 		public async Task CreateUser(DataModel.UserModel utilisateur)
 		{
 			// Encoder les paramètres en content de type "application/x-www-form-urlencoded"
-		
 			JsonContent content = JsonContent.Create(utilisateur);
 
 			// Envoyer la requête POST avec les paramètres
 			var response = await httpClient.PostAsync("api/v1.0/UsersManagement/CreateUser", content);
 			response.EnsureSuccessStatusCode();
-			
 		}
 
-		public async Task<string> GetUserByIdAsync()
+		public async Task<List<DataModel.UserModel>> GetUserByIdAsync(string nom)
 		{
-			try
+			var response = await httpClient.GetAsync($"api/v1.0/UsersManagement/GetUserByID?matricule={nom}");
+			response.EnsureSuccessStatusCode();
+			string result = await response.Content.ReadAsStringAsync();
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+			List<DataModel.UserModel> utilisateurs = JsonSerializer.Deserialize<List<DataModel.UserModel>>(result, new JsonSerializerOptions
 			{
-				var response = await httpClient.GetAsync("api/v1.0/UsersManagement/GetAllUsers/");
-				if (response.IsSuccessStatusCode)
-				{
-					var result = await response.Content.ReadAsStringAsync();
-					return result;
-				}
-				else
-				{
-					return $"Erreur : {response.StatusCode}";
-				}
-			}
-			catch (Exception ex)
-			{
-				return $"Erreur lors de la récupération des utilisateurs.,{ex}";
-			}
+				
+				PropertyNameCaseInsensitive = true // Permet de gérer la casse des noms des propriétés
+			});
+#pragma warning restore CS8600
+
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+			var utilisateur =  utilisateurs!.Where(item => item.Nom.Contains(nom,StringComparison.OrdinalIgnoreCase)).ToList(); //z&& item.Role == privilege);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+			return utilisateur;
 		}
-
-
-		//-----------------------------------
 		public string EncryptUserSecret(string plainText)
 		{
 			throw new NotImplementedException();
@@ -81,7 +71,5 @@ namespace Management_Tasks.ApiServices
 		{
 			throw new NotImplementedException();
 		}
-
-
 	}
 }

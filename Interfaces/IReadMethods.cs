@@ -9,7 +9,7 @@ namespace Management_Tasks.Interfaces
 	public interface IReadMethods
 	{
 		Task<List<DataModel.UserModel>>GetUsersAsync();
-		Task<string> GetUserByIdAsync(); // Aussi
+		 Task<List<DataModel.UserModel>> GetUserByIdAsync(string nom);
 		// Task<TokenResult> GetToken(string email);
 		// bool CheckUserSecret(string secretPass);
 		// Task<List<Utilisateur>> GetUsers();

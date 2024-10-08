@@ -25,7 +25,6 @@ namespace Management_Tasks.Models
 
 			[Required]
 			[Category("Security")]
-			//[System.Text.Json.Serialization.JsonIgnore] // set à disable le mot de passe dans la serialisation json
 			public string? Pass { get; set; }
 
 		}

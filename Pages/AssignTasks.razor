@@ -1,43 +1,59 @@
 ﻿@page "/assign_tasks"
 @inject HttpClient Http
 @inject Management_Tasks.ApiServices.UserService UserService
-<PageTitle>Assign</PageTitle>
+<PageTitle>Assign Tasks</PageTitle>
 
-<h1>listes des taches et utilisateurs</h1>
-<li> titi</li>
-<li>toto </li>
-<SurveyPrompt Title="" />
+<h1>Liste des tâches et utilisateurs</h1>
 
-<!-- Tableau des tâches -->
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Email</th>
-            <th>Role</th>
-           
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in userModels)
-        {
+<form method="get">
+    <input type="text" name="query" placeholder="Rechercher par nom..." @bind="nom" />
+    <button type="submit" @onclick="OnSearch">Rechercher</button>
+</form>
+
+<!-- Tableau des utilisateurs -->
+@if (userModels != null && userModels.Any())
+{
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@user.ID</td>
-                <td>@user.Nom</td>
-                <td>@user.Email</td>
-                <td>@user.Role</td>
-    
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Role</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var user in userModels)
+            {
+                <tr>
+                    <td>@user.ID</td>
+                    <td>@user.Nom</td>
+                    <td>@user.Email</td>
+                    <td>@user.Role</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 
 @code {
-    List<DataModel.UserModel> userModels= new List<DataModel.UserModel>();
+    private string nom = string.Empty;
+    private string role = string.Empty;
+    List<DataModel.UserModel> userModels = new List<DataModel.UserModel>();
     protected override async Task OnInitializedAsync()
     {
-        userModels = await UserService.GetUsersAsync(); // Appel de la méthode du service
-    }
+        userModels = await UserService.GetUsersAsync(); // Chargement initial de tous les utilisateurs
+    } 
 
+    public async Task OnSearch()
+    {
+        if (!string.IsNullOrEmpty(nom))
+        {
+            userModels = await UserService.GetUserByIdAsync(nom); // Recherche par nom
+        }
+        else
+        {
+            userModels = await UserService.GetUsersAsync(); // Si la recherche est vide, recharger tous les utilisateurs
+        }
+    }
 }
