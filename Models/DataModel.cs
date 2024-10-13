@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Management_Tasks.Models
 {
-    public class DataModel
+	public class DataModel
 	{
 		public class UserModel
 		{

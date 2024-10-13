@@ -28,7 +28,18 @@
             "request": "launch",
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:5170",
-            "webRoot": "${workspaceFolder}"
-        }
+            "webRoot": "${workspaceFolder}/"
+        },
+        {
+            "name": "Launch Blazor WebAssembly in Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "https://localhost:5170",  // Remplace par l'URL correcte si nécessaire
+            "webRoot": "${workspaceFolder}",
+            "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
+            "sourceMaps": true,
+            "trace": true,
+            "timeout": 30000
+          }
     ]
 }

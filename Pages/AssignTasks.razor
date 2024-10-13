@@ -1,17 +1,20 @@
 ﻿@page "/assign_tasks"
 @inject HttpClient Http
 @inject Management_Tasks.ApiServices.UserService UserService
+@inject ILogger<ApiServices.UserService> logger
+
 <PageTitle>Assign Tasks</PageTitle>
 
 <h1>Liste des tâches et utilisateurs</h1>
 
-<form method="get">
-    <input type="text" name="query" placeholder="Rechercher par nom..." @bind="nom" />
-    <button type="submit" @onclick="OnSearch">Rechercher</button>
+<form @onsubmit="OnSearch">
+    <input type="text" placeholder="Rechercher par nom..." @bind="nom" required />
+    <input type="text" placeholder="Saisissez le rôle" @bind="role" required />
+    <button type="submit">Rechercher</button>
 </form>
 
 <!-- Tableau des utilisateurs -->
-@if (userModels != null && userModels.Any())
+@if (userModels != null && userModels.Count > 0)
 {
     <table class="table table-striped">
         <thead>
@@ -19,14 +22,14 @@
                 <th>ID</th>
                 <th>Nom</th>
                 <th>Email</th>
-                <th>Role</th>
+                <th>Rôle</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var user in userModels)
             {
                 <tr>
-                    <td>@user.ID</td>
+                    <td>@user.ID</td> <!-- Note : Utilise Id au lieu de ID -->
                     <td>@user.Nom</td>
                     <td>@user.Email</td>
                     <td>@user.Role</td>
@@ -35,25 +38,42 @@
         </tbody>
     </table>
 }
+else if (searchCompleted)
+{
+    <p>Aucun utilisateur trouvé.</p>
+}
 
 @code {
     private string nom = string.Empty;
     private string role = string.Empty;
-    List<DataModel.UserModel> userModels = new List<DataModel.UserModel>();
+    private bool searchCompleted = false;
+    private List<DataModel.UserModel> userModels = new List<DataModel.UserModel>();
+
     protected override async Task OnInitializedAsync()
     {
-        userModels = await UserService.GetUsersAsync(); // Chargement initial de tous les utilisateurs
-    } 
+        try
+        {
+            userModels = await UserService.GetUsersAsync();
+        }
+        catch (Exception ex)
+        {
+            logger.LogError($"Erreur lors du chargement des utilisateurs : {ex.Message}");
+        }
+    }
 
     public async Task OnSearch()
     {
-        if (!string.IsNullOrEmpty(nom))
+        try
         {
-            userModels = await UserService.GetUserByIdAsync(nom); // Recherche par nom
+            // Recherche d'un utilisateur spécifique
+            userModels = await UserService.GetSingleUserByNameRole(nom, role);
+            searchCompleted = true;
         }
-        else
+        catch (Exception ex)
         {
-            userModels = await UserService.GetUsersAsync(); // Si la recherche est vide, recharger tous les utilisateurs
+            logger.LogError($"Erreur lors de la recherche d'utilisateur : {ex.Message}");
+            userModels = new List<DataModel.UserModel>(); // Réinitialiser si une erreur se produit
+            searchCompleted = true;
         }
     }
 }
