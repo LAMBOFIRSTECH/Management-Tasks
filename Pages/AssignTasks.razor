@@ -7,46 +7,27 @@
 
 <h1>Liste des tâches et utilisateurs</h1>
 
-<form @onsubmit="OnSearch">
-    <input type="text" placeholder="Rechercher par nom..." @bind="nom" required />
-    <input type="text" placeholder="Saisissez le rôle" @bind="role" required />
-    <button type="submit">Rechercher</button>
-</form>
-
 <!-- Tableau des utilisateurs -->
-@if (userModels != null && userModels.Count > 0)
-{
-    <table class="table table-striped">
-        <thead>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Rôle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in userModels)
+        {
             <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Rôle</th>
+                <td>@user.Nom</td>
+                <td>@user.Email</td>
+                <td>@user.Role</td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var user in userModels)
-            {
-                <tr>
-                    <td>@user.ID</td> <!-- Note : Utilise Id au lieu de ID -->
-                    <td>@user.Nom</td>
-                    <td>@user.Email</td>
-                    <td>@user.Role</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else if (searchCompleted)
-{
-    <p>Aucun utilisateur trouvé.</p>
-}
-
+        }
+    </tbody>
+</table>
 @code {
-    private string nom = string.Empty;
-    private string role = string.Empty;
-    private bool searchCompleted = false;
     private List<DataModel.UserModel> userModels = new List<DataModel.UserModel>();
 
     protected override async Task OnInitializedAsync()
@@ -61,19 +42,4 @@ else if (searchCompleted)
         }
     }
 
-    public async Task OnSearch()
-    {
-        try
-        {
-            // Recherche d'un utilisateur spécifique
-            userModels = await UserService.GetSingleUserByNameRole(nom, role);
-            searchCompleted = true;
-        }
-        catch (Exception ex)
-        {
-            logger.LogError($"Erreur lors de la recherche d'utilisateur : {ex.Message}");
-            userModels = new List<DataModel.UserModel>(); // Réinitialiser si une erreur se produit
-            searchCompleted = true;
-        }
-    }
 }

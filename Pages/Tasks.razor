@@ -1,10 +1,10 @@
 ﻿@page "/tasks"
 @inject HttpClient Http
 @using Management_Tasks.Pages
-@inject ILogger<Tasks> Logger
+@inject Management_Tasks.ApiServices.UserService UserService
+@* @inject Management_Tasks.ApiServices.TaskService TaskService *@
 
 <PageTitle>Tache</PageTitle>
-
 <div class="d-flex justify-content-center align-items-center vh-170">
     <div class="card p-4 shadow-lg rounded-lg" style="width: 800px;">
         <h3 class="text-center"><b>FORMULAIRE DE CRÉATION DES TACHES</b></h3>
@@ -28,9 +28,9 @@
                 <label for="user">Assigné à</label>
                 <InputText id="user" class="form-control" list="user_list" @bind-Value="taskModel.UserTask" />
                 <datalist id="user_list">
-                    @foreach (var user in users)
+                    @foreach (var user in utilisateurs)
                     {
-                        <option value="@user"></option>
+                        <option value="@user.Nom"></option>
                     }
                 </datalist>
             </div>
@@ -53,26 +53,48 @@
         </EditForm>
     </div>
 </div>
-
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Utilisateur</th>
+            <th>Date de debut</th>
+            <th>Date de fin</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tache in taches)
+            {
+                <tr>
+                    <td>@tache.Titre</td>
+                    <td>@tache.TaskDetails</td>
+                    <td>@tache.UserTask</td>
+                    <td>@tache.TaskStartDate</td>
+                    <td>@tache.TaskDueDate</td>
+                </tr>
+            }
+        </tbody>
+</table>
 @code {
     @using Microsoft.Extensions.Logging
-    protected override void OnInitialized()
-    {
-        Logger.LogDebug("ExampleComponent initialized.");
-    }
 
     private DataModel.TaskModel taskModel = new DataModel.TaskModel();
- 
+    private List<DataModel.UserModel> utilisateurs = new List<DataModel.UserModel>();
+    private List<DataModel.TaskModel> taches = new List<DataModel.TaskModel>();
     private string message = string.Empty;
-
-    // Sample list of users
-    private List<string> users = new List<string> { "Alice", "Bob", "Charlie" };
-
-    private void HandleValidSubmit()
+    protected override async void OnInitialized()
     {
+        utilisateurs = await UserService.GetUsersAsync(); 
+    }
+
+
+      private void HandleValidSubmit()
+    {
+        // utilisateurs = await UserService.GetUsersAsync(); 
         // Logique pour gérer l'envoi du formulaire
         message = "Formulaire envoyé avec succès!";
-        Logger.LogInformation($"ID: {taskModel.Matricule}, Titre: {taskModel.Titre}, Description: {taskModel.TaskDetails}, Assigné à: {taskModel.UserTask}, Date début: {taskModel.TaskStartDate}, Date fin: {taskModel.TaskDueDate}");
+      //  Logger.LogInformation($"ID: {taskModel.Matricule}, Titre: {taskModel.Titre}, Description: {taskModel.TaskDetails}, Assigné à: {taskModel.UserTask}, Date début: {taskModel.TaskStartDate}, Date fin: {taskModel.TaskDueDate}");
     }
     
 

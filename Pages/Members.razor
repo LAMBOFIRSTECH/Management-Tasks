@@ -1,10 +1,16 @@
 ﻿@page "/users"
 @inject HttpClient Http
-@inject Management_Tasks.ApiServices.UserService UserService 
+@inject Management_Tasks.ApiServices.UserService UserService
+@inject ILogger<ApiServices.UserService> logger
 @*C'est ainsi qu'on récupère une classe dans la page de vue  *@ 
 @* @using Management_Tasks.Pages *@
 
 <PageTitle>Membres</PageTitle>
+<form @onsubmit="OnSearch">
+    <input type="text" placeholder="Rechercher par nom..." @bind="nom" required />
+    <input type="text" placeholder="Saisissez le rôle" @bind="role" required />
+    <button type="submit">Rechercher</button>
+</form>
 
 <div class="d-flex justify-content-center align-items-center vh-170">
     <div class="card p-4 shadow-lg rounded-lg" style="width: 800px;">
@@ -23,7 +29,7 @@
 
             <div class="form-group">
                 <label for="role">Rôle</label>
-                <InputSelect id="role" class="form-control" @bind-Value="roleString"> 
+                <InputSelect id="role" class="form-control" @bind-Value="roleString">
                     <option value="Administrateur">Administrateur</option>
                     <option value="Utilisateur">Utilisateur</option>
                 </InputSelect>
@@ -47,32 +53,62 @@
     </div>
 </div>
 
-@code {
+<!-- Tableau des utilisateurs -->
+@if (utilisateurs != null && utilisateurs.Count > 0)
+{
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Rôle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in utilisateurs)
+            {
+                <tr>
+                    <td>@user.Nom</td>
+                    <td>@user.Email</td>
+                    <td>@user.Role</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (searchCompleted)
+{
+    <p>Aucun utilisateur trouvé.</p>
+}
 
+@code {
     private DataModel.UserModel userModel = new DataModel.UserModel();
+    private List<DataModel.UserModel> utilisateurs = new List<DataModel.UserModel>();
     private string roleString = string.Empty;
     private string message = string.Empty;
     private enum MessageType { Succes, Error }
     private string passWord = string.Empty;
+    private string nom = string.Empty;
+    private string role = string.Empty;
+    private bool searchCompleted = false;
 
     public bool CheckPass()
     {
         if (!string.IsNullOrWhiteSpace(passWord) && passWord == userModel.Pass)
         {
             message = $"{MessageType.Succes}";
-            Console.WriteLine($"Nom: {userModel.Nom}, Email: {userModel.Email}, Rôle: {userModel.Role}");
             return true;
         }
         message = $"{MessageType.Error}: Les mots de passe ne correspondent pas.";
         return false;
     }
-    
+
     protected async Task HandleValidSubmit()
     {
         if (!CheckPass())
         {
             message = $"{MessageType.Error}: Les mots de passe ne correspondent pas. L'utilisateur n'a pas été créé.";
-            return; 
+            return;
         }
         try
         {
@@ -84,11 +120,35 @@
             utilisateur.Role = userModel.Role;
             utilisateur.Email = userModel.Email;
             await UserService.CreateUser(utilisateur);
+            utilisateurs = await UserService.GetUsersAsync();
+            await Task.Delay(4000);
             message = $"{MessageType.Succes}: Utilisateur créé avec succès.";
         }
         catch (Exception ex)
         {
             message = $"{MessageType.Error}: {ex.Message}";
+            message = $"{MessageType.Error}:Erreur lors du chargement des utilisateurs : {ex.Message}";
+        }
+       
+    }
+    private void HandleReset()
+    {
+        userModel = new DataModel.UserModel();
+        message = string.Empty;
+    }
+
+    public async Task OnSearch()
+    {
+        try
+        {
+            utilisateurs = await UserService.GetSingleUserByNameRole(nom, role);
+            searchCompleted = true;
+        }
+        catch (Exception ex)
+        {
+            message = $"{MessageType.Error}Erreur lors de la recherche d'utilisateur : {ex.Message}";
+            utilisateurs = new List<DataModel.UserModel>(); // Réinitialiser si une erreur se produit
+            searchCompleted = true;
         }
     }
     private string TextColor(MessageType messageType)
@@ -100,9 +160,5 @@
             _ => string.Empty
         };
     }
-    private void HandleReset()
-    {
-        userModel = new DataModel.UserModel();
-        message = string.Empty;
-    }
+
 }
